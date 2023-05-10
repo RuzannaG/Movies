@@ -1,0 +1,48 @@
+.App {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.form {
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 400px;
+    height: 400px;
+    margin-top: 30%;
+    background-color: hsl(270, 4%, 78%);
+    box-shadow: 5px 10px 8px 10px #888888;
+    border-radius: 11px;
+
+}
+form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 400px;
+}
+input{
+    width: 200px;
+    height: 30px;
+    margin: 10px;
+}
+input[type="submit"] {
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    background: #01d28e;
+    border: none;
+    color: #fff;
+    
+  }
+
+body{
+    background-color: #cbcaca;
+}
