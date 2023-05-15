@@ -1,6 +1,6 @@
 import { useState } from "react"
  
- export const Comments=({setShow, setMovie })=>{
+ export const Comments=({setShow, movie, setMovie,  })=>{
 
 
     const [comm, setComm]=useState()
@@ -9,20 +9,23 @@ import { useState } from "react"
         setComm(e.target.value)
         console.log(comm)
      }
-const save=()=>{
-    setMovie({
-        id:Math.random(),
-       
-        comments:comm
-    })
-    console.log(comm)
+const hadleAdd=()=>{
+  
+        setMovie([...movie,{
+            id:Math.random(),
+
+            comments:''
+        }])
+    
+    
 }
+console.log(comm)
 
     return(
         <div className="modal"> 
 <div className="modal-flex">
     <input type="text" onChange={hadleCom}/>
-    <button onClick={save}>add</button>
+    <button onClick={hadleAdd}>add</button>
     <button onClick={()=>setShow(null)}>Close</button>
 </div>
 </div>

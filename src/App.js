@@ -26,7 +26,7 @@ function App() {
         Genre: "Action, Adventure, Fantasy",
         Director: "James Cameron",
         star: SimpleStar,
-        comments:""
+        comments:''
 
     },
     {
@@ -118,7 +118,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/movies" element={<Movies movie={movie}/>} />
+        <Route path="/movies" element={<Movies   movie={movie}  />} />
         <Route path="/detailMovie/:id" element={<DetailMovie movie={movie}/>} />
         <Route path="/createMovie" element={<CreateMovie />} />
 

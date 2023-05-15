@@ -13,8 +13,10 @@ import { Comments } from "./comments";
 import { useNavigate } from "react-router";
 import { CreateMovie } from "../createMovie/createMovie";
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from "react-redux";
+import { deleteMovies } from "../../srore/movies/movies.actions";
 
-export const Movies = ({comm}) => {
+export const Movies = () => {
     const navigate =useNavigate();
     const handlePush =(id)=>{
         navigate(`/detailMovie/${id}`)
@@ -121,14 +123,36 @@ export const Movies = ({comm}) => {
 
      
 
-    
+    const [comm, setComm]=useState()
 
+    const hadleCom= (e)=>{
+        setComm(e.target.value)
+        console.log(comm)
+     }
+const hadleAdd=()=>{
+  
+        setMovie([...movie,{
+            id:Math.random(),
 
+            comments:''
+        }])
+        setComm('')
+    }
+
+    const dispatch= useDispatch()
+    const movisList=useSelector((state)=>state.moviesReduser.moviesList)
+    console.log(movisList)
+
+    const handleClik=()=>{
+        dispatch(deleteMovies())
+    }
     return (
         <div>  
 
            
             <h2 className="best">Best movies here</h2>
+       <button onClick={handleClik}>delete</button>
+
             <div className="movie">
               
                 {
@@ -144,24 +168,35 @@ export const Movies = ({comm}) => {
                                         <li>{i?.Genre}</li>
                                         <li>{i?.Director}</li>
                                         <div><img src={i.star} /></div>
-                                         <p>{i?.comments}</p> 
+                                          <p>{comm}</p>
+                                         
                                     </li>
                                  
                                 </ul> 
                                
                                 <button className="modal-butt" onClick={()=>setShow(i.id)}>Add <br/>comments</button>
-
+                              
+                                
                             </div>
                         )
 
-                    })
+                    }) 
+                    
                 }
-         
-
-            </div>         {
+    {console.log(comm)}
+            </div>        
+            
+             {
 
                 show &&
-<Comments setShow={setShow} movie={movie} setMovie={setMovie} />
+                <div className="modal"> 
+                <div className="modal-flex">
+                    <input type="text" onChange={hadleCom}/>
+                    <button onClick={hadleAdd}>add</button>
+                    <button onClick={()=>setShow(null)}>Close</button>
+                </div>
+                </div>
+ 
 }
 <CreateMovie movie={movie} setMovie={setMovie}/>
             </div>
